@@ -31,7 +31,6 @@ function Detail() {
   let [boolean, setBoolean] = useState(false);
   let [tab, setTab] = useState(0);
   let [fade, setFade] = useState("");
-  let cart = useSelector((state) => state.cart);
   let dispatch = useDispatch();
 
   // 타이머 유즈 이팩트
@@ -76,9 +75,7 @@ function Detail() {
           <div className="row">
             <div className="col-md-6">
               <img
-                src={`https://codingapple1.github.io/shop/shoes${
-                  products[id].id - 1
-                }.jpg`}
+                src={`https://codingapple1.github.io/shop/shoes${products[id].id}.jpg`}
                 width="100%"
               />
             </div>
@@ -87,17 +84,15 @@ function Detail() {
               <p>{products[id].content}</p>
               <p>{products[id].price.toLocaleString()}원</p>
               <div>
-                {console.log(cart[id - 1].id)}
                 <button
                   className="btn btn-danger"
                   onClick={() => {
                     dispatch(
-                      addItem(
-                        cart[id - 1].id,
-                        cart[id - 1].name,
-                        cart[id - 1].count,
-                        cart[id - 1].content
-                      )
+                      addItem({
+                        id: products[id].id,
+                        name: products[id].title,
+                        content: `${products[id].id}번 상품임 `,
+                      })
                     );
                   }}
                 >

@@ -8,8 +8,8 @@ function Card() {
   return (
     <div className="row">
       {products.map((product, i) => (
-        <div className="col-md-4" key={product.id} data-code={product.id}>
-          <Link to={`/detail/${products[i].id}`}>
+        <div className="col-md-4" key={products.id} data-code={products.id}>
+          <Link to={`/detail/${products[i].id - 1}`}>
             <img
               src={`https://codingapple1.github.io/shop/shoes${products[i].id}.jpg`}
               width="80%"

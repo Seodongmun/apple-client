@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
+import Detail from "./components/Detail";
+import LoginSuccess from "./components/LoginSuccess";
 import Main from "./pages/Main";
 import Login from "./pages/member/Login";
 import Signup from "./pages/member/Signup";
-import Detail from "./components/Detail";
 import Error from "./pages/Error";
 import Cart from "./pages/Cart";
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "/login-success",
+    element: <LoginSuccess />,
   },
   {
     errorElement: <Error />,

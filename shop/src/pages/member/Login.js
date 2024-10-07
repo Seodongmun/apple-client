@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import { useState } from "react";
 import { login } from "../../api/member";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login: authLogin } = useAuth(); // login이 다른 함수명으로 있어서 이름을 변경
+
   const [member, setMember] = useState({
     id: "",
     password: "",
@@ -23,7 +26,7 @@ const Login = () => {
     // 403 401 에러 뜰시 해당 테이블 try catch로 잡아야함
     try {
       if (result.status === 200) {
-        localStorage.setItem("token", result.data);
+        authLogin(result.data);
         alert("로그인 성공!");
         navigate("/");
       }
@@ -31,6 +34,7 @@ const Login = () => {
       alert("아이디나 비밀번호가 다릅니다");
     }
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 shadow-md max-w-md w-full">

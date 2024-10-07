@@ -1,14 +1,19 @@
 import { useNavigate, Link } from "react-router-dom";
-import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 const Header = () => {
   const navigate = useNavigate();
+
   const Cart = () => {
     navigate("/cart");
   };
 
   const Login = () => {
     navigate("/login");
+  };
+
+  const Signup = () => {
+    navigate("/signup");
   };
 
   const Logout = () => {
@@ -31,20 +36,9 @@ const Header = () => {
         </Container>
         <Nav className="me-auto">
           <Nav.Link onClick={Event}>event</Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            back
-          </Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              navigate(1);
-            }}
-          >
-            front
-          </Nav.Link>
+          <Nav.Link onClick={Login}>Login</Nav.Link>
+          <Nav.Link onClick={Signup}>Signup</Nav.Link>
+          <Nav.Link></Nav.Link>
         </Nav>
       </Navbar>
     </>

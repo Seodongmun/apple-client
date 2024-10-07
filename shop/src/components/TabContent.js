@@ -20,10 +20,10 @@ const TabContent = ({ tab, products, id }) => {
 
   return (
     <div className={"start " + fade}>
-      {tab == 0 ? <div>상품명 : {products[id - 1].title}</div> : null}
-      {tab == 1 ? <div>상세정보 : {products[id - 1].content}</div> : null}
+      {tab == 0 ? <div>상품명 : {products[id].title}</div> : null}
+      {tab == 1 ? <div>상세정보 : {products[id].content}</div> : null}
       {tab == 2 ? (
-        <div>가격 : {products[id - 1].price.toLocaleString()}</div>
+        <div>가격 : {products[id].price.toLocaleString()}</div>
       ) : null}
     </div>
   );

@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addCount, decreseCount, test } from "./../store/cartSlice.js";
+import { addCount, decreseCount, removeItem } from "./../store/cartSlice.js";
 
 const Cart = () => {
   // store에서 가져올때 (useSelector)
@@ -17,38 +17,40 @@ const Cart = () => {
           <th>수량</th>
           <th>상품정보</th>
           <th>변경하기</th>
+          <th>삭제</th>
         </tr>
       </thead>
 
       <tbody>
-        {cart.map((cart, i) => (
-          <tr key={cart.id} data-code={cart.id}>
-            <td>{cart.id}</td>
-            <td>{cart.name}</td>
-            <td>{cart.count}</td>
-            <td>{cart.content}</td>
+        {cart.map((a, i) => (
+          <tr key={i}>
+            <td>{cart[i].id}</td>
+            <td>{cart[i].name}</td>
+            <td>{cart[i].count}</td>
+            <td>{cart[i].content}</td>
             <td>
-              {/* cart의 array의 cart.id 랑 같은 상품의 버튼을 payload로 보낸다 */}
               <button
                 onClick={() => {
-                  dispatch(addCount(cart.id));
+                  dispatch(addCount(cart[i].id));
                 }}
               >
                 +
               </button>
               <button
                 onClick={() => {
-                  dispatch(decreseCount(cart.id));
+                  dispatch(decreseCount(cart[i].id));
                 }}
               >
                 -
               </button>
+            </td>
+            <td>
               <button
                 onClick={() => {
-                  dispatch(test(cart.id));
+                  dispatch(removeItem(cart[i].id));
                 }}
               >
-                test
+                삭제
               </button>
             </td>
           </tr>
