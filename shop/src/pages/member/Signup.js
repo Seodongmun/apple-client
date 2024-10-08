@@ -11,25 +11,13 @@ const Signup = () => {
     email: "",
     phone: "",
   });
-  // const [id, setId] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState("");
 
   // 회원가입 로직 구현 (signup 호출)
 
   const submit = async () => {
     // 콘솔로 input 정보 들어오는지 확인
 
-    const result = await signup(
-      // {
-      //   id: id,
-      //   password: password,
-      //   email: email,
-      //   phone: phone,
-      // }
-      member
-    );
+    const result = await signup(member);
     console.log(result);
     if (result.status === 200) {
       alert("회원가입 성공");

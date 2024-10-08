@@ -35,7 +35,6 @@ const Header = () => {
           </Nav>
         </Container>
         <Nav className="me-auto">
-          <Nav.Link onClick={Event}>event</Nav.Link>
           <Nav.Link onClick={Login}>Login</Nav.Link>
           <Nav.Link onClick={Signup}>Signup</Nav.Link>
           <Nav.Link></Nav.Link>
