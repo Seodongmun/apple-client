@@ -1,0 +1,14 @@
+.count-button {
+  width: 50px;
+  height: 25px;
+}
+
+.cart-count-th {
+  width: 200px;
+}
+.cart-count-td {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

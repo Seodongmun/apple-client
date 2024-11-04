@@ -1,0 +1,16 @@
+.mypage-box {
+  height: 100vh;
+}
+
+.mypage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.image-button {
+  display: flex;
+  width: 150px;
+}
