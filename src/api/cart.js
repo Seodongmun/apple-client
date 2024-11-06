@@ -14,7 +14,7 @@ const authorize = axios.create({
 
 // 로그인한 사람이 가진 카트품목
 export const getCarts = async (id) => {
-  return await instance.get("select", {
+  return await authorize.get("select", {
     params: {
       id: id,
     },
@@ -23,14 +23,14 @@ export const getCarts = async (id) => {
 
 // 장바구니 추가
 export const addCart = async (data) => {
-  return await instance.post("cart", data);
+  return await authorize.post("cart", data);
 };
 
 // 로그인한 사람의 카운트 조회
 export const cartCount = async (cartCode, data) => {
   try {
     if (cartCode !== null || cartCode !== undefined) {
-      return await instance.post("cartCount", data);
+      return await authorize.post("cartCount", data);
     } else {
       console.log(cartCode);
     }
@@ -41,15 +41,15 @@ export const cartCount = async (cartCode, data) => {
 
 // cartCode 받아서 count + 1
 export const increase = async (data) => {
-  return await instance.put("cart/increaseCount", data);
+  return await authorize.put("cart/increaseCount", data);
 };
 
 // cartCode 받아서 count - 1
 export const decrease = async (data) => {
-  return await instance.put("cart/decreaseCount", data);
+  return await authorize.put("cart/decreaseCount", data);
 };
 
 // 장바구니 삭제
 export const removeCart = async (cartCode) => {
-  return await instance.delete(`cart/${cartCode}`);
+  return await authorize.delete(`cart/${cartCode}`);
 };

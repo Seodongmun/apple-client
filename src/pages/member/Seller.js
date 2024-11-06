@@ -26,6 +26,7 @@ const Seller = () => {
   // 5. sellerAPI 호출
   const sellerAPI = async () => {
     const result = await getProductCode(loginId);
+    // result.data가 배열인지 확인후 배열이라면 result.data SET 아니면 빈배열
     setSellerProduct(Array.isArray(result.data) ? result.data : []);
   };
 

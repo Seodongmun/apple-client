@@ -55,22 +55,25 @@ const Detail = () => {
   console.log(
     "현재 카트페이지에 들어온 회원의 등급 = " + (member?.type || "정보 없음")
   );
+
+  const submit = async () => {
+    const result = await addCart(cart);
+    alert("상품이 장바구니에 추가되었습니다");
+  };
+
+  useEffect(() => {
+    cartAPI(loginId);
+  }, []);
+
   useEffect(() => {
     memberAPI(loginId);
     productAPI();
-    cartAPI(loginId);
   }, []);
 
   let [boolean, setBoolean] = useState(false);
   let [tab, setTab] = useState(0);
   let [fade, setFade] = useState("");
   let dispatch = useDispatch();
-
-  const submit = async () => {
-    await addCart(cart);
-    alert("상품이 장바구니에 추가되었습니다");
-    console.log("카트 추가 submit");
-  };
 
   // 타이머 유즈 이팩트
   useEffect(() => {
@@ -122,13 +125,7 @@ const Detail = () => {
               <h4 className="pt-5">{selectedProduct.title}</h4>
               <p>{selectedProduct.content}</p>
               <p>{selectedProduct.price.toLocaleString()}원</p>
-              <p>
-                <StyledButton
-                  ButtonName={"좋아요"}
-                  onClick={addLike}
-                ></StyledButton>
-                ❤ {like}
-              </p>
+              <p>❤ {like}</p>
               <div>
                 <Input
                   type="number"
@@ -141,13 +138,10 @@ const Detail = () => {
                     ButtonName={"장바구니 추가"}
                     onClick={submit}
                   ></StyledButton>
-                  {member?.type === "seller" ? (
-                    <StyledButton
-                      ButtonName={"상품 수정"}
-                      onClick={Product}
-                      productCode={productCode}
-                    ></StyledButton>
-                  ) : null}
+                  <StyledButton
+                    ButtonName={"좋아요"}
+                    onClick={addLike}
+                  ></StyledButton>
                 </div>
               </div>
             </div>

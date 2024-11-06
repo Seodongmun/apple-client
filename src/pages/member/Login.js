@@ -22,6 +22,28 @@ const Login = () => {
     id: "",
     password: "",
   });
+
+  const activeEnter = (e) => {
+    if (e.key === "Enter") {
+      submit();
+    }
+  };
+
+  // Enter 키로 로그인
+  useEffect(() => {
+    const handleEnter = (e) => {
+      if (e.key === "Enter") {
+        submit();
+      }
+    };
+    window.addEventListener("keydown", handleEnter);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("keydown", handleEnter);
+    };
+  }, [member]);
+
   const submit = async () => {
     const result = await login(member);
     try {
@@ -58,7 +80,12 @@ const Login = () => {
             change={(e) => setMember({ ...member, password: e.target.value })}
           />
           <div style={{ width: "50%", display: "flex" }}>
-            <StyledButton ButtonName="로그인" onClick={submit} />
+            <StyledButton
+              ButtonName="로그인"
+              onClick={submit}
+              onKeyDown={activeEnter}
+              tabIndex="0"
+            />
             <StyledButton ButtonName="구글 로그인" onClick={google} />
             <StyledButton ButtonName="회원가입" onClick={signup} />
           </div>

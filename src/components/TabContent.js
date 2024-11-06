@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "../assets/App.css";
 import Cart from "../pages/Cart";
 import StyledButton from "./Button";
+import Stack from "react-bootstrap/Stack";
 
 const TabContent = ({ tab, cartList, selectedProduct }) => {
   const [fade, setFade] = useState("");
@@ -29,16 +30,19 @@ const TabContent = ({ tab, cartList, selectedProduct }) => {
         <>
           <div>
             {cartList.map((cart, i) => (
-              <div>
-                <div key={cart.cartCode}>
-                  <h1>상품명 : {cart.product.title}</h1>
-                  <h1>상품정보 : {cart.product.content}</h1>
-                  <h1>가격 : {cart.product.price.toLocaleString()}</h1>
-                  <h1>개수 : {cart.count}</h1>
-                  <h1>============================</h1>
-                </div>
+              <div key={cart.cartCode}>
+                <Stack gap={3}>
+                  <div className="p-2">상품명 : {cart.product.title}</div>
+                  <div className="p-2">상품정보 : {cart.product.content}</div>
+                  <div className="p-2">
+                    가격 : {cart.product.price.toLocaleString()}
+                  </div>
+                  <div className="p-2">수량 : {cart.count}</div>
+                  <div>=================================</div>
+                </Stack>
               </div>
             ))}
+
             <StyledButton ButtonName={"결제"}></StyledButton>
           </div>
         </>
