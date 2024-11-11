@@ -14,11 +14,16 @@ const authorize = axios.create({
 
 // 로그인한 사람이 가진 카트품목
 export const getCarts = async (id) => {
-  return await authorize.get("select", {
-    params: {
-      id: id,
-    },
-  });
+  console.log(id);
+  try {
+    return await authorize.get("select", {
+      params: {
+        id: id,
+      },
+    });
+  } catch (error) {
+    throw error;
+  }
 };
 
 // 장바구니 추가

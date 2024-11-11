@@ -24,8 +24,12 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const cartAPI = async (loginId) => {
-    const result = await getCarts(loginId);
-    setCartList(result.data);
+    try {
+      const result = await getCarts(loginId);
+      setCartList(result.data);
+    } catch (error) {
+      throw error;
+    }
   };
 
   // 카운트 + 1
@@ -47,17 +51,6 @@ const Cart = () => {
   useEffect(() => {
     cartAPI(loginId);
   }, []);
-
-  const getCount = async (cartCode, loginId) => {
-    try {
-      console.log(cartCode, loginId);
-      const result = await cartCount(cartCode, { member: { id: loginId } });
-      console.log("카트 카운트 가온나 = " + result.data);
-      setCount(result.data);
-    } catch (error) {
-      console.log("데이터가 없습니다");
-    }
-  };
 
   const checkout = () => {
     navigate(`/cart/${loginId}/checkout`);

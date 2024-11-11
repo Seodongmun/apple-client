@@ -12,7 +12,7 @@ const Main = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={process.env.PUBLIC_URL + "/다람쥐2.jpg"}
+              src={process.env.PUBLIC_URL + "/대문더미.jpg"}
               alt="Second slide"
               width="100%"
               height="500px"
@@ -22,7 +22,7 @@ const Main = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={process.env.PUBLIC_URL + "/a.jpg"}
+              src={process.env.PUBLIC_URL + "/대문더미2.jpg"}
               alt="Second slide"
               width="100%"
               height="500px"
@@ -32,7 +32,7 @@ const Main = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={process.env.PUBLIC_URL + "/bg.png"}
+              src={process.env.PUBLIC_URL + "/대문더미3.jpg"}
               alt="Third slide"
               width="100%"
               height="500px"

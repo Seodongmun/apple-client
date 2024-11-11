@@ -17,6 +17,7 @@ const ProductEdit = ({ sellerProduct, setSellerProduct }) => {
     title: "",
     content: "",
     price: 0,
+    url: "",
     stock: 0,
     member: {
       id: loginId,
